@@ -14,9 +14,17 @@ public class ExamAnalysis {
 	    System.out.println("Input Data File does not exist.");
 	}
 
+	int studentCount = 0;
 	while (inputDataFile.hasNextLine()) {
 	    String nextLine = inputDataFile.nextLine();
-	    System.out.println(nextLine.equals("") ? "We have reached \"end of file!\"" : nextLine);
+	    if (nextLine.equals("")) {
+		System.out.println("We have reached \"end of file!\"");
+	    } else {
+		studentCount++;
+		System.out.println("Student #" + studentCount + "'s responses: " + nextLine);
+	    }
 	}
+	System.out.println();
+	System.out.println("Thank you for the data on " + studentCount + " students. Here's the analysis:");
     }
 }
