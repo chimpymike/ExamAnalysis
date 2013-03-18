@@ -1,0 +1,4 @@
+# Java class (compiled) files
+*.class
+# App data files
+*.dat
