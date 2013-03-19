@@ -25,6 +25,7 @@ public class ExamAnalysis {
 		System.out.println("Check the spelling of the file name and try again.");
 	    }
 	}
+	System.out.println();
 
 	ArrayList<String> studentAnswers = new ArrayList<String>();
 	int studentCount = 0;
@@ -40,6 +41,7 @@ public class ExamAnalysis {
 	}
 	System.out.println();
 	System.out.println("Thank you for the data on " + studentCount + " students. Here's the analysis:");
+	System.out.println();
 	System.out.println(analyzeStudentGrades(studentAnswers, correctAnswers));
     }
 
@@ -55,10 +57,10 @@ public class ExamAnalysis {
 		char correctAnswer = correctAnswers.charAt(j);
 		if (answer == correctAnswer) {
 		    correct++;
-		} else if (answer != correctAnswer) {
-		    incorrect++;
-		} else {
+		} else if (answer == ' ') {
 		    blank++;
+		} else {
+		    incorrect++;
 		}
 	    }
 	    studentGradesAnalysis.append("    " + (i+1) + "                " + correct + "               " + incorrect + "              " + blank + lineSeparator);
