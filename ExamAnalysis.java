@@ -7,11 +7,17 @@ public class ExamAnalysis {
 	System.out.println("Exam Analysis");
 
 	Scanner inputDataFile = null;
+	Scanner keyboard = new Scanner(System.in);
 
-	try {
-	    inputDataFile = new Scanner(new File("exams.dat"));
-	} catch (FileNotFoundException e) {
-	    System.out.println("Input Data File does not exist.");
+	while (inputDataFile == null) {
+	    System.out.print("What is the name of the file containing each student's responses to the 10 questions? ");
+	    String inputDataFileName = keyboard.next();
+	    try {
+		inputDataFile = new Scanner(new File(inputDataFileName));
+	    } catch (FileNotFoundException e) {
+		System.out.println("Input Data File does not exist.");
+		System.out.println("Check the spelling of the file name and try again.");
+	    }
 	}
 
 	int studentCount = 0;
