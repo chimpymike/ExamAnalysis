@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ExamAnalysis {
@@ -25,12 +26,14 @@ public class ExamAnalysis {
 	    }
 	}
 
+	ArrayList<String> studentAnswers = new ArrayList<String>();
 	int studentCount = 0;
 	while (inputDataFile.hasNextLine()) {
 	    String nextLine = inputDataFile.nextLine();
 	    if (nextLine.equals("")) {
 		System.out.println("We have reached \"end of file!\"");
 	    } else {
+		studentAnswers.add(nextLine);
 		studentCount++;
 		System.out.println("Student #" + studentCount + "'s responses: " + nextLine);
 	    }
