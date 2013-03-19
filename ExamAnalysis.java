@@ -40,5 +40,30 @@ public class ExamAnalysis {
 	}
 	System.out.println();
 	System.out.println("Thank you for the data on " + studentCount + " students. Here's the analysis:");
+	System.out.println(analyzeStudentGrades(studentAnswers, correctAnswers));
+    }
+
+    public static String analyzeStudentGrades(ArrayList<String> studentAnswers, String correctAnswers) {
+	String lineSeparator = System.getProperty("line.separator");
+	StringBuilder studentGradesAnalysis = new StringBuilder("Student #        Correct        Incorrect        Blank" + lineSeparator +
+								"~~~~~~~~~        ~~~~~~~        ~~~~~~~~~        ~~~~~" + lineSeparator);
+	for (int i = 0; i < studentAnswers.size(); i++) {
+	    String studentAnswer = studentAnswers.get(i);
+	    int correct = 0, incorrect = 0, blank = 0;
+	    for (int j = 0; j < studentAnswer.length(); j++) {
+		char answer = studentAnswer.charAt(j);
+		char correctAnswer = correctAnswers.charAt(j);
+		if (answer == correctAnswer) {
+		    correct++;
+		} else if (answer != correctAnswer) {
+		    incorrect++;
+		} else {
+		    blank++;
+		}
+	    }
+	    studentGradesAnalysis.append("    " + (i+1) + "                " + correct + "               " + incorrect + "              " + blank + lineSeparator);
+	}
+
+	return studentGradesAnalysis.toString();
     }
 }
