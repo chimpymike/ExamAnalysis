@@ -4,11 +4,16 @@ import java.util.Scanner;
 
 public class ExamAnalysis {
     public static void main(String[] args) {
-	System.out.println("Exam Analysis");
-
 	Scanner inputDataFile = null;
 	Scanner keyboard = new Scanner(System.in);
 
+	System.out.println("I hope you are ready to begin ...");
+	System.out.println();
+
+	System.out.print("Please type the correct answers to the exam questions, one right after the other: ");
+	String correctAnswers = keyboard.next();
+	System.out.println();
+	
 	while (inputDataFile == null) {
 	    System.out.print("What is the name of the file containing each student's responses to the 10 questions? ");
 	    String inputDataFileName = keyboard.next();
