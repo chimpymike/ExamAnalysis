@@ -16,7 +16,7 @@ public class ExamAnalysis {
 	System.out.println();
 	
 	while (inputDataFile == null) {
-	    System.out.print("What is the name of the file containing each student's responses to the 10 questions? ");
+	    System.out.print("What is the name of the file containing each student's responses to the 10 questions? "); // NEED TO CHANGE THIS TO NOT HARDCODE NUMBER OF QUESTIONS
 	    String inputDataFileName = keyboard.next();
 	    try {
 		inputDataFile = new Scanner(new File(inputDataFileName));
@@ -47,8 +47,8 @@ public class ExamAnalysis {
 
     public static String analyzeStudentGrades(ArrayList<String> studentAnswers, String correctAnswers) {
 	String lineSeparator = System.getProperty("line.separator");
-	StringBuilder studentGradesAnalysis = new StringBuilder("Student #        Correct        Incorrect        Blank" + lineSeparator +
-								"~~~~~~~~~        ~~~~~~~        ~~~~~~~~~        ~~~~~" + lineSeparator);
+	StringBuilder studentGradesAnalysis = new StringBuilder("Student #        Correct        Incorrect        Blank" + lineSeparator +// USE printf (or format)
+								"~~~~~~~~~        ~~~~~~~        ~~~~~~~~~        ~~~~~" + lineSeparator);// to format output
 	for (int i = 0; i < studentAnswers.size(); i++) {
 	    String studentAnswer = studentAnswers.get(i);
 	    int correct = 0, incorrect = 0, blank = 0;
