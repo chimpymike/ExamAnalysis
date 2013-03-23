@@ -16,7 +16,7 @@ public class ExamAnalysis {
 	System.out.println();
 	
 	while (inputDataFile == null) {
-	    System.out.print("What is the name of the file containing each student's responses to the 10 questions? "); // NEED TO CHANGE THIS TO NOT HARDCODE NUMBER OF QUESTIONS
+	    System.out.print("What is the name of the file containing each student's responses to the " + correctAnswers.length() + " questions? ");
 	    String inputDataFileName = keyboard.next();
 	    try {
 		inputDataFile = new Scanner(new File(inputDataFileName));
