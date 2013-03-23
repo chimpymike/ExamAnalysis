@@ -99,7 +99,7 @@ public class ExamAnalysis {
 		}
 	    }
 	    questionsAnalysis.append(String.format("%4d%8d%8d%8d%8d%8d%n", aCount, bCount, cCount, dCount, eCount, blankCount));
-	    questionsAnalysis.append(String.format("%4.1f%%%8.1f%%%8.1f%%%8.1f%%%8.1f%%%8.1f%%%n%n", (aCount/numberOfStudents)*100, (bCount/numberOfStudents)*100, (cCount/numberOfStudents)*100,
+	    questionsAnalysis.append(String.format("%5.1f%%%7.1f%%%7.1f%%%7.1f%%%7.1f%%%7.1f%%%n%n", (aCount/numberOfStudents)*100, (bCount/numberOfStudents)*100, (cCount/numberOfStudents)*100,
 						   (dCount/numberOfStudents)*100, (eCount/numberOfStudents)*100, (blankCount/numberOfStudents)*100));
 	}
 	return questionsAnalysis.toString();
