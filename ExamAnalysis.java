@@ -46,7 +46,6 @@ public class ExamAnalysis {
     }
 
     public static String analyzeStudentGrades(ArrayList<String> studentAnswers, String correctAnswers) {
-	String lineSeparator = System.getProperty("line.separator");
 	StringBuilder studentGradesAnalysis = new StringBuilder(String.format("%-17s%-15s%-17s%s%n%-17s%-15s%-17s%s%n",
 									      "Student#", "Correct", "Incorrect", "Blank",
 									      "~~~~~~~~", "~~~~~~~", "~~~~~~~~~", "~~~~~"));
