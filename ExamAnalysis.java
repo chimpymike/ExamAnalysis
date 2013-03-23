@@ -68,4 +68,24 @@ public class ExamAnalysis {
 
 	return studentGradesAnalysis.toString();
     }
+
+    public static String getQuestionAnalysisHeader(char correctAnswer) {
+	String[] questionAnalysisHeaders = {String.format("%4s%8s%8s%8s%8s%8s%n", "A*", "B", "C", "D", "E", "Blank"),
+					    String.format("%4s%8s%8s%8s%8s%8s%n", "A", "B*", "C", "D", "E", "Blank"),
+					    String.format("%4s%8s%8s%8s%8s%8s%n", "A", "B", "C*", "D", "E", "Blank"),
+					    String.format("%4s%8s%8s%8s%8s%8s%n", "A", "B", "C", "D*", "E", "Blank"),
+					    String.format("%4s%8s%8s%8s%8s%8s%n", "A", "B", "C", "D", "E*", "Blank"),
+					    String.format("%4s%8s%8s%8s%8s%8s%n", "A", "B", "C", "D", "E", "Blank*")};
+
+	switch (correctAnswer) {
+	case 'A': return questionAnalysisHeaders[0];
+	case 'B': return questionAnalysisHeaders[1];
+	case 'C': return questionAnalysisHeaders[2];
+	case 'D': return questionAnalysisHeaders[3];
+	case 'E': return questionAnalysisHeaders[4];
+	case ' ': return questionAnalysisHeaders[5];
+	default: return "";
+	}
+    }
+					    
 }
