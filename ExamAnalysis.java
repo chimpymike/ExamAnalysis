@@ -72,10 +72,11 @@ public class ExamAnalysis {
     }
 
     public static String analyzeQuestions(ArrayList<String> studentAnswers, String correctAnswers) {
-	StringBuilder questionsAnalysis = new StringBuilder(String.format("%s%33s%n%s%n", "Question Analysis", "(* marks the correct response)", "~~~~~~~~~~~~~~~~~"));
+	StringBuilder questionsAnalysis = new StringBuilder(String.format("%s%33s%n%s%n%n", "Question Analysis", "(* marks the correct response)", "~~~~~~~~~~~~~~~~~"));
 	
 	for (int i = 0; i < correctAnswers.length(); i++) {
 	    char correctAnswer = correctAnswers.charAt(i);
+	    questionsAnalysis.append(String.format("Question #%d:%n", i + 1));
 	    questionsAnalysis.append(getQuestionAnalysisHeader(correctAnswer));
 	    int aCount = 0, bCount = 0, cCount = 0, dCount = 0, eCount = 0, blankCount = 0;
 	    for (String studentAnswer : studentAnswers) {
