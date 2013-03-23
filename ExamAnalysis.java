@@ -73,6 +73,8 @@ public class ExamAnalysis {
 
     public static String analyzeQuestions(ArrayList<String> studentAnswers, String correctAnswers) {
 	StringBuilder questionsAnalysis = new StringBuilder(String.format("%s%33s%n%s%n%n", "Question Analysis", "(* marks the correct response)", "~~~~~~~~~~~~~~~~~"));
+
+	float numberOfStudents = studentAnswers.size();
 	
 	for (int i = 0; i < correctAnswers.length(); i++) {
 	    char correctAnswer = correctAnswers.charAt(i);
@@ -97,6 +99,8 @@ public class ExamAnalysis {
 		}
 	    }
 	    questionsAnalysis.append(String.format("%4d%8d%8d%8d%8d%8d%n", aCount, bCount, cCount, dCount, eCount, blankCount));
+	    questionsAnalysis.append(String.format("%4.1f%%%8.1f%%%8.1f%%%8.1f%%%8.1f%%%8.1f%%%n%n", (aCount/numberOfStudents)*100, (bCount/numberOfStudents)*100, (cCount/numberOfStudents)*100,
+						   (dCount/numberOfStudents)*100, (eCount/numberOfStudents)*100, (blankCount/numberOfStudents)*100));
 	}
 	return questionsAnalysis.toString();
     }
