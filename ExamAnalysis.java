@@ -43,6 +43,8 @@ public class ExamAnalysis {
 	System.out.println("Thank you for the data on " + studentCount + " students. Here's the analysis:");
 	System.out.println();
 	System.out.println(analyzeStudentGrades(studentAnswers, correctAnswers));
+
+	System.out.println(analyzeQuestions(studentAnswers, correctAnswers));
     }
 
     public static String analyzeStudentGrades(ArrayList<String> studentAnswers, String correctAnswers) {
@@ -67,6 +69,35 @@ public class ExamAnalysis {
 	}
 
 	return studentGradesAnalysis.toString();
+    }
+
+    public static String analyzeQuestions(ArrayList<String> studentAnswers, String correctAnswers) {
+	StringBuilder questionsAnalysis = new StringBuilder(String.format("%s%33s%n%s%n", "Question Analysis", "(* marks the correct response)", "~~~~~~~~~~~~~~~~~"));
+	
+	for (int i = 0; i < correctAnswers.length(); i++) {
+	    char correctAnswer = correctAnswers.charAt(i);
+	    questionsAnalysis.append(getQuestionAnalysisHeader(correctAnswer));
+	    int aCount = 0, bCount = 0, cCount = 0, dCount = 0, eCount = 0, blankCount = 0;
+	    for (String studentAnswer : studentAnswers) {
+		char studentQuestionAnswer = studentAnswer.charAt(i);
+		switch (studentQuestionAnswer) {
+		case 'A': aCount++;
+		    break;
+		case 'B': bCount++;
+		    break;
+		case 'C': cCount++;
+		    break;
+		case 'D': dCount++;
+		    break;
+		case 'E': eCount++;
+		    break;
+		case ' ': blankCount++;
+		    break;
+		}
+	    }
+	    questionsAnalysis.append(String.format("%4d%8d%8d%8d%8d%8d%n", aCount, bCount, cCount, dCount, eCount, blankCount));
+	}
+	return questionsAnalysis.toString();
     }
 
     public static String getQuestionAnalysisHeader(char correctAnswer) {
