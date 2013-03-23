@@ -47,8 +47,9 @@ public class ExamAnalysis {
 
     public static String analyzeStudentGrades(ArrayList<String> studentAnswers, String correctAnswers) {
 	String lineSeparator = System.getProperty("line.separator");
-	StringBuilder studentGradesAnalysis = new StringBuilder("Student #        Correct        Incorrect        Blank" + lineSeparator +// USE printf (or format)
-								"~~~~~~~~~        ~~~~~~~        ~~~~~~~~~        ~~~~~" + lineSeparator);// to format output
+	StringBuilder studentGradesAnalysis = new StringBuilder(String.format("%-17s%-15s%-17s%s%n%-17s%-15s%-17s%s%n",
+									      "Student#", "Correct", "Incorrect", "Blank",
+									      "~~~~~~~~", "~~~~~~~", "~~~~~~~~~", "~~~~~"));
 	for (int i = 0; i < studentAnswers.size(); i++) {
 	    String studentAnswer = studentAnswers.get(i);
 	    int correct = 0, incorrect = 0, blank = 0;
@@ -63,7 +64,7 @@ public class ExamAnalysis {
 		    incorrect++;
 		}
 	    }
-	    studentGradesAnalysis.append("    " + (i+1) + "                " + correct + "               " + incorrect + "              " + blank + lineSeparator);
+	    studentGradesAnalysis.append(String.format("%5d%17d%15d%15d%n", i+1, correct, incorrect, blank));
 	}
 
 	return studentGradesAnalysis.toString();
