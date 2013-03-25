@@ -12,6 +12,15 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * This class will print out an analysis of exam answers.
+ *
+ * The correct answers are entered as a string
+ * and the student answers are read in from a file.
+ *
+ * @author Michael Callahan
+ * @version Last Modified 03_25_2013
+ */
 public class ExamAnalysis {
     public static void main(String[] args) {
 	Scanner inputDataFile = null;
