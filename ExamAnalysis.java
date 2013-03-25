@@ -1,3 +1,12 @@
+/*
+ * Name: Michael Callahan
+ * Course: CSCI E-50B
+ * Date: 03/25/2013
+ * Assignment Number: 53
+ */
+
+// ExamAnalysis.java
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
