@@ -23,16 +23,20 @@ import java.util.Scanner;
  */
 public class ExamAnalysis {
     public static void main(String[] args) {
+	// Initialize the exams input data file to null to enable getting an existing file
 	Scanner inputDataFile = null;
 	Scanner keyboard = new Scanner(System.in);
 
 	System.out.println("I hope you are ready to begin ...");
 	System.out.println();
 
+	// Get the correct answers
 	System.out.print("Please type the correct answers to the exam questions, one right after the other: ");
 	String correctAnswers = keyboard.next();
 	System.out.println();
 	
+	// Get the exams answer data file
+	// Loop until the user enters an existing file
 	while (inputDataFile == null) {
 	    System.out.print("What is the name of the file containing each student's responses to the " + correctAnswers.length() + " questions? ");
 	    String inputDataFileName = keyboard.next();
@@ -45,6 +49,7 @@ public class ExamAnalysis {
 	}
 	System.out.println();
 
+	// Read the student answers from the data file into a list for processing
 	ArrayList<String> studentAnswers = new ArrayList<String>();
 	int studentCount = 0;
 	while (inputDataFile.hasNextLine()) {
@@ -58,10 +63,13 @@ public class ExamAnalysis {
 	    }
 	}
 	System.out.println();
+
+	// Print out the student exam analysis
 	System.out.println("Thank you for the data on " + studentCount + " students. Here's the analysis:");
 	System.out.println();
 	System.out.println(analyzeStudentGrades(studentAnswers, correctAnswers));
 
+	// Print out the question analysis
 	System.out.println(analyzeQuestions(studentAnswers, correctAnswers));
     }
 
@@ -73,9 +81,13 @@ public class ExamAnalysis {
      * @return the analysis of all of the students answers as a String
      */
     public static String analyzeStudentGrades(ArrayList<String> studentAnswers, String correctAnswers) {
+	// Add the header text
 	StringBuilder studentGradesAnalysis = new StringBuilder(String.format("%-17s%-15s%-17s%s%n%-17s%-15s%-17s%s%n",
 									      "Student#", "Correct", "Incorrect", "Blank",
 									      "~~~~~~~~", "~~~~~~~", "~~~~~~~~~", "~~~~~"));
+
+	// Iterate through each student's answers
+	// to count the correct and incorrect answers
 	for (int i = 0; i < studentAnswers.size(); i++) {
 	    String studentAnswer = studentAnswers.get(i);
 	    int correct = 0, incorrect = 0, blank = 0;
@@ -90,9 +102,9 @@ public class ExamAnalysis {
 		    incorrect++;
 		}
 	    }
+	    // Add the current student's analysis
 	    studentGradesAnalysis.append(String.format("%5d%17d%15d%15d%n", i+1, correct, incorrect, blank));
 	}
-
 	return studentGradesAnalysis.toString();
     }
 
@@ -104,10 +116,14 @@ public class ExamAnalysis {
      * @return the analysis of all the questions as a String
      */
     public static String analyzeQuestions(ArrayList<String> studentAnswers, String correctAnswers) {
+	// Add the questions analysis header
 	StringBuilder questionsAnalysis = new StringBuilder(String.format("%s%33s%n%s%n%n", "Question Analysis", "(* marks the correct response)", "~~~~~~~~~~~~~~~~~"));
 
+	// Get the total number of students for calculating the answer percentages
 	float numberOfStudents = studentAnswers.size();
 	
+	// Iterate through the questions counting
+	// the number of students that gave each answer
 	for (int i = 0; i < correctAnswers.length(); i++) {
 	    char correctAnswer = correctAnswers.charAt(i);
 	    questionsAnalysis.append(String.format("Question #%d:%n", i + 1));
@@ -130,6 +146,8 @@ public class ExamAnalysis {
 		    break;
 		}
 	    }
+
+	    // Add the student answer counts and the percentages for each question
 	    questionsAnalysis.append(String.format("%4d%8d%8d%8d%8d%8d%n", aCount, bCount, cCount, dCount, eCount, blankCount));
 	    questionsAnalysis.append(String.format("%5.1f%%%7.1f%%%7.1f%%%7.1f%%%7.1f%%%7.1f%%%n%n", (aCount/numberOfStudents)*100, (bCount/numberOfStudents)*100, (cCount/numberOfStudents)*100,
 						   (dCount/numberOfStudents)*100, (eCount/numberOfStudents)*100, (blankCount/numberOfStudents)*100));
@@ -145,6 +163,7 @@ public class ExamAnalysis {
      * @return the question analysis header String
      */
     public static String getQuestionAnalysisHeader(char correctAnswer) {
+	// Array of header strings for each different correct answer
 	String[] questionAnalysisHeaders = {String.format("%4s%8s%8s%8s%8s%8s%n", "A*", "B", "C", "D", "E", "Blank"),
 					    String.format("%4s%8s%8s%8s%8s%8s%n", "A", "B*", "C", "D", "E", "Blank"),
 					    String.format("%4s%8s%8s%8s%8s%8s%n", "A", "B", "C*", "D", "E", "Blank"),
@@ -152,6 +171,11 @@ public class ExamAnalysis {
 					    String.format("%4s%8s%8s%8s%8s%8s%n", "A", "B", "C", "D", "E*", "Blank"),
 					    String.format("%4s%8s%8s%8s%8s%8s%n", "A", "B", "C", "D", "E", "Blank*")};
 
+
+	// Switch on the correct answer
+	// returning the corresponding header string with the
+	// correct answer marked with an asterisk
+	// Return an empty string if this is not a valid answer
 	switch (correctAnswer) {
 	case 'A': return questionAnalysisHeaders[0];
 	case 'B': return questionAnalysisHeaders[1];
