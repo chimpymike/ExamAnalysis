@@ -65,6 +65,13 @@ public class ExamAnalysis {
 	System.out.println(analyzeQuestions(studentAnswers, correctAnswers));
     }
 
+    /**
+     * Analyze a list of student answers and return a string containing the analysis.
+     *
+     * @param studentAnswers an ArrayList of student answer strings
+     * @param correctAnswers the correct answers string
+     * @return the analysis of all of the students answers as a String
+     */
     public static String analyzeStudentGrades(ArrayList<String> studentAnswers, String correctAnswers) {
 	StringBuilder studentGradesAnalysis = new StringBuilder(String.format("%-17s%-15s%-17s%s%n%-17s%-15s%-17s%s%n",
 									      "Student#", "Correct", "Incorrect", "Blank",
@@ -89,6 +96,13 @@ public class ExamAnalysis {
 	return studentGradesAnalysis.toString();
     }
 
+    /**
+     * Analyze a list of exam questions and return a string containing the analysis.
+     *
+     * @param studentAnswers an ArrayList of student answer strings
+     * @param correctAnswers the correct answers string
+     * @return the analysis of all the questions as a String
+     */
     public static String analyzeQuestions(ArrayList<String> studentAnswers, String correctAnswers) {
 	StringBuilder questionsAnalysis = new StringBuilder(String.format("%s%33s%n%s%n%n", "Question Analysis", "(* marks the correct response)", "~~~~~~~~~~~~~~~~~"));
 
@@ -123,6 +137,13 @@ public class ExamAnalysis {
 	return questionsAnalysis.toString();
     }
 
+    /**
+     * Returns a formatted question analysis header string based on the
+     * current correct answer.
+     *
+     * @param correctAnswer the correct answer char
+     * @return the question analysis header String
+     */
     public static String getQuestionAnalysisHeader(char correctAnswer) {
 	String[] questionAnalysisHeaders = {String.format("%4s%8s%8s%8s%8s%8s%n", "A*", "B", "C", "D", "E", "Blank"),
 					    String.format("%4s%8s%8s%8s%8s%8s%n", "A", "B*", "C", "D", "E", "Blank"),
@@ -141,5 +162,4 @@ public class ExamAnalysis {
 	default: return "";
 	}
     }
-					    
 }
